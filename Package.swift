@@ -16,13 +16,20 @@ let package = Package(
         .target(
             name: "UltraDrawerViewObjCUtils",
             dependencies: [],
+            swiftSettings: [
+                .unsafeFlags(["-no-verify-emitted-module-interface"])
+            ],
             linkerSettings: [
                 .linkedFramework("Foundation"),
                 .linkedFramework("UIKit")
             ]),
         .target(
             name: "UltraDrawerView",
-            dependencies: ["UltraDrawerViewObjCUtils"]),
+            dependencies: ["UltraDrawerViewObjCUtils"],
+            swiftSettings: [
+                .unsafeFlags(["-no-verify-emitted-module-interface"])
+            ]
+        ),
         .testTarget(
             name: "UltraDrawerViewTests",
             dependencies: ["UltraDrawerView"]),
